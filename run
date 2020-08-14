@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+set -e
+
+#
+# Helpers
+##################################################
+
+red="\e[31m"
+reset="\e[39m"
+
+run() {
+  task=${1}
+  shift
+  echo -e [${task}] ${@}
+  ${@}
+}
+
+fail() {
+  echo -e ${red}${@}${reset}
+  exit 1
+}
+
+#
+# Commands
+##################################################
+
+#
+# Build server, config and client
+#
+build() {
+  run build mkdir -p dist/client/
+  run build cp -R src/client/*.css dist/client/ &
+
+  export NODE_ENV="production"
+
+  run build yarn microbundle \
+    --no-pkg-main \
+    --no-compress \
+    --no-sourcemap \
+    --strict \
+    --tsconfig src/client/tsconfig.json \
+    -i src/client/verdaccio-4.ts \
+    -o dist/client/verdaccio-4.js \
+    -f modern &
+
+  run build yarn microbundle \
+    --no-pkg-main \
+    --no-compress \
+    --no-sourcemap \
+    --strict \
+    --tsconfig tsconfig.json \
+    -i src/server/index.ts \
+    -o dist/server/index.js \
+    -f cjs &
+
+  run build yarn microbundle \
+    --no-pkg-main \
+    --no-compress \
+    --no-sourcemap \
+    --strict \
+    --tsconfig tsconfig.json \
+    -i src/api/index.ts \
+    -o dist/api/index.js \
+    -f cjs &
+
+  wait
+}
+
+#
+# Remove the plugin from node_modules
+#
+clean() {
+  run clean rm -rf dist
+  run clean rm -rf plugins
+}
+
+
+#
+# Copy the built plugin to node_modules
+#
+copy() {
+  run copy mkdir -p plugins/verdaccio-auth/
+  run copy cp -R dist plugins/verdaccio-auth/
+  run copy cp package.json plugins/verdaccio-auth/
+}
+
+#
+# Run tsc
+#
+typecheck() {
+  run typecheck yarn tsc -p src/client/tsconfig.json &
+  run typecheck yarn tsc -p src/server/tsconfig.json &
+  run typecheck yarn tsc -p test/tsconfig.json &
+
+  wait
+}
+
+#
+# CLI
+##################################################
+
+#
+# Call the function specified by the first parameter, passing all remaining
+# parameters to the function. If no such function exists, display usage info.
+#
+if [ -n "$1" ] && type $1 | grep -i function > /dev/null; then
+  command="$1"
+  shift
+  $command ${@}
+else
+  fail "No such command: $1"
+fi

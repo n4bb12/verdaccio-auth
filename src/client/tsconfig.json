@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "lib": ["es2020", "dom"],
+    "target": "es2015",
+    "types": []
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["**/*"]
+}
