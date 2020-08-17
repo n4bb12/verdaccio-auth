@@ -48,6 +48,7 @@
     "express": "^4.17.0",
     "global-agent": "^2.1.5",
     "got": "^11.3.0",
+    "lodash": "4.17.19",
     "memory-cache": "^0.2.0",
     "minimist": "^1.2.0",
     "open": "^7.0.2",
@@ -72,7 +73,6 @@
     "babel-jest": "^26.0.1",
     "codecov": "^3.7.1",
     "jest": "^26.0.1",
-    "lodash": "4.17.19",
     "microbundle": "^0.12.3",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
@@ -82,11 +82,11 @@
     "verdaccio-htpasswd": "^9.3.0"
   },
   "peerDependencies": {
-    "lodash": "4",
-    "verdaccio": "3 || 4"
+    "verdaccio": "4 || 5"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=12",
+    "yarn": ">=2.1"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

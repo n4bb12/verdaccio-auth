@@ -11530,8 +11530,7 @@ typescript@next:
     verdaccio: ^4.4.2
     verdaccio-htpasswd: ^9.3.0
   peerDependencies:
-    lodash: 4
-    verdaccio: 3 || 4
+    verdaccio: 4 || 5
   languageName: unknown
   linkType: soft
 

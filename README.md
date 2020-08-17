@@ -39,5 +39,5 @@ See the [Related Verdaccio Issues](https://github.com/n4bb12/verdaccio-auth/proj
 ## Compatibility
 
 - Node >=12
-- Verdaccio 4 and 5
+- Verdaccio 4
 - [Modern Browsers](browserslist)
