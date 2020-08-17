@@ -24,16 +24,20 @@
   </a> -->
 </p>
 
+<p align="center">
+  📣 This project is not yet released. Anything can change.
+</p>
+
 ## About
 
-This is an in-progress base authentication plugin that intelligently integrates with Verdaccio and makes authentication with Verdaccio more extensible.
+This plugin integrates with Verdaccio and re-exposes a new authentication plugin API that makes authentication more extensible and combinable, including suppport for modications to the default UI.
 
-The goal is to solve Verdaccio's authentication needs in a consistent and reusable way with support for long-requested open authentication features, some of which are outlined below: configurable UI, multiple auth plugins, fine-grained permissions, reverse proxy authentication, 2FA, WebAuthn, and more.
+The result is a more consistent login experience and support for long-requested authentication features, such as: configurable setup instructions, multiple authentication methods, fine-grained permissions, reverse proxy authentication, 2FA, WebAuthn, and more.
 
 See the [Related Verdaccio Issues](https://github.com/n4bb12/verdaccio-auth/projects/1) project board.
 
-## Planned Compatibility
+## Compatibility
 
 - Node >=12
-- Verdaccio 4
+- Verdaccio 4 and 5
 - [Modern Browsers](browserslist)
