@@ -1,55 +1,42 @@
 import { RemoteUser } from "@verdaccio/types"
-import { Request, Router } from "express"
+import { Router } from "express"
 
-export type AuthType = "redirect" | "reverse_proxy" | "login_form"
+import { AuthPluginType } from "./AuthPluginType"
 
 export interface AuthPlugin {
   /**
-   * The ID is used for logging and as a namespace for request handlers.
+   * This option determines how the plugin integrates with Verdaccio, how the
+   * user interface gets modified and which conventions apply.
    */
-  id: string
+  type: AuthPluginType
 
   /**
-   * This option determines how the default Verdaccio user interface gets
-   * modified.
+   * The name is used to refer to the authentication method whenever it is
+   * displayed to users.
    *
-   * - `redirect`: Enables the login page and adds a button to initiate the
-   * redirect.
-   *
-   * - `reverse_proxy`: If this is the only type of authentication mechanism,
-   * the default login button gets removed and the login page doesn't get added.
-   *
-   * - `login_form`: This option adds a login form to the login page. If using
-   * the htpasswd plugin, this behaviour gets added automatically.
+   * If no name is provided, the plugin's module name is used as a fallback.
    */
-  type: AuthType
+  name?: string
 
   /**
    * The logo is used
-   * - in the heading of the setup instructions for every authentication method
-   * - in the login button for redirect-based authentication methods
+   * - in the heading of the authentication method's setup instructions
+   * - in the login button (for redirect-based authentication methods)
    */
   logoUrl?: string
 
   /**
-   * This refers to the instructions Verdaccio presents to users by default,
-   * however, scoped to a single authentication method.
+   * This creates a dedicated section in the setup instruction.
    *
    * Every entry in the return value is rendered as a separate step.
    *
-   * If empty or not implemented, no setup instructions get added.
+   * If not implemented or empty, no setup instructions are added for this
+   * authentication method.
    *
-   * If no authentication method adds setup instructions, the corresponding
-   * user interface components get removed.
+   * If none of the available authentication methods implement any setup
+   * instructions, the corresponding user interface elements get removed.
    */
   getSetupInstructions?: (user: RemoteUser) => Promise<string[]>
-
-  /**
-   * This refers to the instructions Verdaccio presents to users by default,
-   * however scoped to a single authentication method.
-   * Every entry in the return value is rendered as a separate step.
-   */
-  getRedirectUrl?: (req: Request) => Promise<string>
 
   /**
    * If the authentication mechanism is redirect-based, if you would like to
