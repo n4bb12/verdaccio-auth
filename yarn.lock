@@ -3635,7 +3635,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.6.4, core-js@npm:^3.6.5":
+"core-js@npm:^3.6.5":
   version: 3.6.5
   resolution: "core-js@npm:3.6.5"
   checksum: 9283348dd5be2f1d07feaf90e2336b3f00a2316e3d3c6d4f789c9a67bdd4d7b08ce1c88dca4e591340130056c6b412b0b74fae039f8e259206f1073f542e4e85
@@ -4216,6 +4216,19 @@ __metadata:
   dependencies:
     path-type: ^4.0.0
   checksum: 687fa3bd604f264042f325d9460e1298447fb32782f30cddc47cb302b742684d13e8ffce4c6f455e0ae92099d71e29f72387379c10b8fd3f6f1bf8992d7c0997
+  languageName: node
+  linkType: hard
+
+"dist@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "dist@npm:0.1.2"
+  dependencies:
+    filesize: ~1.6.6
+    optimist: ~0.3.5
+    uglify-js: ~1.3.4
+  bin:
+    dist: ./bin/dist.js
+  checksum: 2c005c0a6fba21c7b4b7f850fa5fdc6f4eed30db3b8b56a725e6752221a8b6463ca24f46f2e37a17ee11254ceff044f0a1afc738a31605de01b775b586a676b6
   languageName: node
   linkType: hard
 
@@ -4877,6 +4890,13 @@ __metadata:
   version: 6.1.0
   resolution: "filesize@npm:6.1.0"
   checksum: 5c0c4be4861bacdfcb701f1162aad6d6fe3724cbb69fcb9f55b3adfbb43d83d776790446a3d10da1cecf3616fc91b5d73ee3ab174ff1e141c983418cb83f9c9c
+  languageName: node
+  linkType: hard
+
+"filesize@npm:~1.6.6":
+  version: 1.6.7
+  resolution: "filesize@npm:1.6.7"
+  checksum: 397d4b26009a53c1e7ff9a073afaeabe416c8e855a666922dbdd74ef9196b69f446c69e04c222892170d207390360f074b1d186c79582d8cfc964e4ad3bd783f
   languageName: node
   linkType: hard
 
@@ -7467,6 +7487,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash@npm:^4.17.20":
+  version: 4.17.20
+  resolution: "lodash@npm:4.17.20"
+  checksum: c62101d2500c383b5f174a7e9e6fe8098149ddd6e9ccfa85f36d4789446195f5c4afd3cfba433026bcaf3da271256566b04a2bf2618e5a39f6e67f8c12030cb6
+  languageName: node
+  linkType: hard
+
 "log-symbols@npm:^3.0.0":
   version: 3.0.0
   resolution: "log-symbols@npm:3.0.0"
@@ -8369,6 +8396,15 @@ __metadata:
   bin:
     opencollective-postinstall: index.js
   checksum: d75b06b80eb426aaf099307ca4398f3119c8c86ff3806a95cfe234b979b80c07080040734fe2dc3c51fed5b15bd98dae88340807980bdc74aa1ebf045c74ef06
+  languageName: node
+  linkType: hard
+
+"optimist@npm:~0.3.5":
+  version: 0.3.7
+  resolution: "optimist@npm:0.3.7"
+  dependencies:
+    wordwrap: ~0.0.2
+  checksum: 6a2fb24e0eda97593c29f4bbb0ade1e7a3682ff7747bac61120c67eb2fa519328c331d188628d81027195ebde9a9a460542d2ae360422bc543568b381fcdd34c
   languageName: node
   linkType: hard
 
@@ -11204,6 +11240,15 @@ typescript@next:
   languageName: node
   linkType: hard
 
+"uglify-js@npm:~1.3.4":
+  version: 1.3.5
+  resolution: "uglify-js@npm:1.3.5"
+  bin:
+    uglifyjs: ./bin/uglifyjs
+  checksum: 166aa0c66691697d337620508d060a414d290e7f8e6f28fd39e72f08d5e1b9a0f68a8e9844dce6c4a27113f39710ea21ec38f500427e097270738316f51d28a0
+  languageName: node
+  linkType: hard
+
 "undefsafe@npm:^2.0.2":
   version: 2.0.3
   resolution: "undefsafe@npm:2.0.3"
@@ -11489,6 +11534,12 @@ typescript@next:
   languageName: node
   linkType: hard
 
+"verdaccio-auth@link:./plugins/verdaccio-auth::locator=verdaccio-auth%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "verdaccio-auth@link:./plugins/verdaccio-auth::locator=verdaccio-auth%40workspace%3A."
+  languageName: node
+  linkType: soft
+
 "verdaccio-auth@workspace:.":
   version: 0.0.0-use.local
   resolution: "verdaccio-auth@workspace:."
@@ -11511,13 +11562,14 @@ typescript@next:
     babel-jest: ^26.0.1
     chalk: ^4.1.0
     codecov: ^3.7.1
-    core-js: ^3.6.4
+    core-js: ^3.6.5
+    dist: ^0.1.2
     dotenv: ^8.2.0
     express: ^4.17.0
     global-agent: ^2.1.5
     got: ^11.3.0
     jest: ^26.0.1
-    lodash: 4.17.19
+    lodash: ^4.17.20
     memory-cache: ^0.2.0
     microbundle: ^0.12.3
     minimist: ^1.2.0
@@ -11528,6 +11580,7 @@ typescript@next:
     release-it: ^13.0.2
     typescript: next
     verdaccio: ^4.4.2
+    verdaccio-auth: "link:./plugins/verdaccio-auth"
     verdaccio-htpasswd: ^9.3.0
   peerDependencies:
     verdaccio: 4 || 5
@@ -11793,6 +11846,13 @@ typescript@next:
   version: 1.0.0
   resolution: "wordwrap@npm:1.0.0"
   checksum: b4f3f8104a727d1b08e77f43f3692977146f13074392747a3d9cfd631d0fc3ff1c0c034d44fcd7a22183c6505d2fc305421e3512671f8a56f903055671ace4ce
+  languageName: node
+  linkType: hard
+
+"wordwrap@npm:~0.0.2":
+  version: 0.0.3
+  resolution: "wordwrap@npm:0.0.3"
+  checksum: e8c84baa721bd7bc13a88e52e1bc25dd4d14accedafe04d24fbc400ba74ae6d620ac4eff5425d5cab342d1ff43f74396272492039b7d7a804bffd2039a153ff0
   languageName: node
   linkType: hard
 

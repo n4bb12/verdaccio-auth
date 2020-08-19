@@ -21,7 +21,7 @@ module.exports = (api) => {
           modules: isTest ? "commonjs" : false,
           useBuiltIns: "usage",
           corejs: 3,
-          targets: isTest ? { node: "current" } : undefined,
+          targets: isTest ? { node: "current" } : { node: "12" },
         },
       ],
       ["@babel/preset-typescript"],
